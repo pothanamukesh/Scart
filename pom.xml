@@ -62,6 +62,12 @@
     <artifactId>jquery</artifactId>
     <version>3.1.1</version>
 </dependency>
+<!-- Backend Dependency   included -->
+<dependency>
+<groupId>com.niit</groupId>
+  <artifactId>ScarBackEnd</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
 
     
    

@@ -6,7 +6,10 @@ package com.niit.scart.controller;
     import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.scart.dao.temp.UserDAO;
+import com.niit.scartbackend.dao.UserDAO;
+import com.niit.scartbackend.daoimpl.UserDAOImpl;
+
+
 
 	 
 	@Controller
@@ -45,7 +48,7 @@ import com.niit.scart.dao.temp.UserDAO;
 			ModelAndView mv=new ModelAndView("home");
 			
 			
-			UserDAO userDAO=new UserDAO();
+			UserDAO userDAO=new UserDAOImpl();
 			if(userDAO.isValidCredentials(id, pwd)==true)
 			{
 				mv.addObject("successMsg", "You Loggin is successfully");
