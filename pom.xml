@@ -62,10 +62,52 @@
     <artifactId>jquery</artifactId>
     <version>3.1.1</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>4.3.5.RELEASE</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.2.5.Final</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+    <version>1.4.193</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.22</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-orm</artifactId>
+    <version>4.3.5.RELEASE</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>5.3.4.Final</version>
+</dependency>
+
+
+
+
+
 <!-- Backend Dependency   included -->
 <dependency>
 <groupId>com.niit</groupId>
-  <artifactId>ScarBackEnd</artifactId>
+  <artifactId>ScartBackEnd</artifactId>
   <version>0.0.1-SNAPSHOT</version>
 </dependency>
 

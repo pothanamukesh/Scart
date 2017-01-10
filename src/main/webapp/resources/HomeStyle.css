@@ -1,0 +1,262 @@
+@charset "utf-8";
+/* CSS Document */
+div
+{display:block;}
+#search-bar
+{
+	position:relative;
+	width:700px;
+	height:35px;
+}
+#search-bar-button
+{
+	height:35px !important;
+}
+#nav-main #navbar {
+      background-color:#333;
+}
+
+.navbar-form {
+padding-left:200px;
+}
+/*====================================================================================================*/
+
+#nav-main #navbar {
+      background-color:#333;
+}
+#nav-main, #navbar .nav-main {
+    width: 100%;
+    height: 60px;
+    padding-top: 5px;
+    position: relative;
+    background-position: 0 -725px;
+}
+#nav-main .nav-left .nav-right
+{
+	height:55px;
+}
+.nav-left .{
+    position: relative;
+    float: left;
+    width: auto;
+   /* display: inline-block;*/
+	color:#000;
+}
+#nav-shop {
+    float: left;
+    padding: 6px 27px 0 15px;
+    text-decoration: none;
+    margin-top: 2px;
+    width: 192px;
+}
+#nav-shop .nav-a-2 {
+    padding-right: 0;
+    overflow: hidden;
+    top: 1px;
+    margin: 0 1px;
+    display: inline-block;
+    box-sizing: border-box;
+   
+}
+#nav-shop .nav-a {
+    line-height: 44px;
+    height: 44px;
+    position: relative;
+    float: left;
+    top: 1px;
+    padding: 0 0 0 10px;
+}
+
+
+#nav-shop .nav-a-2 .nav-line-1 {
+    font-size: 12px;
+    line-height: 14px;
+    height: 14px;
+    font-weight: 400;
+    margin-top: 9px;
+}
+#navbar #nav-search-label, #navbar .nav-a-2 .nav-line-1, #navbar .nav-a-2 .nav-line-2 {
+    color: #FFF;
+}
+#nav-shop .nav-a-2 .nav-line-2 {
+    font-size: 14px;
+    line-height: 15px;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+#nav-shop .nav-a-2 .nav-line-1, #nav-shop .nav-a-2 .nav-line-2 {
+    float: left;
+    clear: both;
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 11px;
+    font-family: arial,sans-serif;
+    color:#FFF;
+}
+ .nav-icon .nav-arrow {
+    border-top-color: #a7acb2;
+}
+#navbar.nav-bluebeacon .nav-icon.nav-arrow {
+    border-top-color: #a7acb2;
+}
+
+#nav-shop .nav-a-2 .nav-line-2 .nav-icon {
+    display: inline-block;
+    border-style: solid;
+    _border-style: dashed;
+    border-width: 4px;
+    border-color: transparent;
+    border-top: 4px solid #606060;
+    border-bottom-width: 0;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    margin: 0 0 2px 5px;
+    visibility: hidden;
+}
+.nav-right {
+    position: relative;
+    float: right;
+    width: auto;
+    display: inline-block;
+}
+#nav-tools
+ {
+    float: left;
+    padding: 6px 7px 0 32px;
+    text-decoration: none;
+    margin-top: 2px;
+}
+#nav-tools .nav-a-2, #navbar .nav-tools .nav-a-2
+ {
+    padding-right: 0;
+    overflow: hidden;
+    top: 1px;
+    margin: 0 1px;
+    display: inline-block;
+   }
+   #nav-tools .nav-a, #navbar .nav-tools .nav-a {
+    position: relative;
+    float: left;
+    top: 1px;
+    padding: 0 0 0 10px;
+    line-height: 44px;
+    height: 44px;
+}
+#nav-tools .nav-a-2 .nav-line-1
+{
+    font-size: 11px;
+    line-height: 14px;
+    height: 14px;
+    font-weight: 400;
+    margin-top: 9px;
+}
+#nav-tools .nav-a-2 .nav-line-1
+{
+    float: left;
+    clear: both;
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 11px;
+    font-family: arial,sans-serif;
+    color: #FFF;
+}
+#nav-tools .nav-a-2 .nav-line-2
+{
+    font-size: 14px;
+    line-height: 15px;
+    font-weight: 700;
+    padding-bottom: 5px;
+}
+/*#nav-tools .nav-a-2 .nav-line-1, #nav-tools .nav-a-2 .nav-line-2, #nav-tools .nav-a-2 .nav-line-3, #nav-tools .nav-a-2 .nav-line-4, #navbar .nav-tools .nav-a-2 .nav-line-1, #navbar .nav-tools .nav-a-2 .nav-line-2, #navbar .nav-tools .nav-a-2 .nav-line-3, #navbar .nav-tools .nav-a-2 .nav-line-4*/
+#nav-tools .nav-a-2 .nav-line-2 {
+    float: left;
+    clear: both;
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 11px;
+    font-family: arial,sans-serif;
+    color: #FFF;
+}
+#nav-tools .nav-a-2 .nav-line-2 .nav-icon, #nav-tools .nav-a-2 .nav-line-4 .nav-icon, #navbar .nav-tools .nav-a-2 .nav-line-2 .nav-icon, #navbar .nav-tools .nav-a-2 .nav-line-4 .nav-icon {
+    display: inline-block;
+    border-style: solid;
+    _border-style: dashed;
+    border-width: 4px;
+    border-color: transparent;
+    border-top: 4px solid #606060;
+    border-bottom-width: 0;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    line-height: 0;
+    margin: 0 0 2px 5px;
+    visibility: hidden;
+}
+
+#nav-tools #nav-cart .nav-line-1, #nav-tools #nav-cart .nav-line-2, #nav-tools .nav-cart .nav-line-1, #nav-tools .nav-cart .nav-line-2, #navbar .nav-tools #nav-cart .nav-line-1, #navbar .nav-tools #nav-cart .nav-line-2, #navbar .nav-tools .nav-cart .nav-line-1, #navbar .nav-tools .nav-cart .nav-line-2 {
+    margin-left: 42px;
+}
+#nav-tools #nav-cart .nav-cart-icon, #nav-tools .nav-cart .nav-cart-icon, #navbar .nav-tools #nav-cart .nav-cart-icon, #navbar .nav-tools .nav-cart .nav-cart-icon {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: 10px;
+    top: 11px;
+    background-position: -10px -340px;
+    width: 38px;
+    height: 26px;
+}
+.nav-sprite {
+    background-image:url(images/Scart.png);
+	
+	/*(http://g-ecx.images-amazon.com/images/G/31/gno/sprites/global-sprite_bluebeacon-32-v1._CB295619377_.png);*/
+    
+}
+#nav-cart-count
+ {
+    color: #f08804;
+    top: 7px;
+}
+#nav-tools #nav-cart .nav-cart-0, #nav-tools .nav-cart .nav-cart-0, #navbar .nav-tools #nav-cart .nav-cart-0, #navbar .nav-tools .nav-cart .nav-cart-0 {
+    left: 23px;
+    top: 9px;
+    font-size: 16px;
+    width: 19px;
+}
+#nav-tools .nav-cart-count, #navbar .nav-tools .nav-cart-count {
+    color: #e47911;
+    font-weight: 700;
+    font-family: arial,sans-serif;
+    position: absolute;
+    line-height: 16px;
+    width: 20px;
+    text-align: center;
+}
+/**********************************************************************************************************************************************************/
+
+
+.nav-shop /*._114Zhd*/ .category{
+    width: 978px;
+    margin: 0 auto;
+    position: relative;
+}
+.nav-shop {
+    background-color: #2874f0;
+    color: #212121;
+    height: 40px;
+}
+.nav-shop .Wbt_B2 {
+    display: inline-block;
+}
+li {
+    list-style: none;
+}
+.nav-shop .electronics {
+    text-transform: uppercase;
+    padding: 12px 15px 9px;
+    color: #f0f0f0;
+    font-weight: 500;
+    display: block;
+}

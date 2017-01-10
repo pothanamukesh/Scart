@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Page</title>
+
 </head>
 <body>
 <h1>login page:${msg }</h1>
@@ -12,9 +13,6 @@
 Username:<input type="text" name="id"><br>
 Password:<input type="password" name="password"><br>
 <input type="submit" value="submit"> <br>
-
-</form>
-
 
 </body>
 </html>
