@@ -62,7 +62,7 @@
 		</form:form>
 	</div>
 	<div align="center">
-		<table class="table1" style="width: 80%">
+		<table class="table1" style="width: 80%" border="1px">
 			<caption>Products</caption>
 			<thead>
 				<tr id="tr1">
@@ -79,20 +79,20 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${productList}" var="product">
-					<tr id="tr1">
-						<td id="td1"><c:out value="${product.id}" />
-						<td id="td1"><c:out value="${product.name}" />
-						<td id="td1"><c:out value="${product.description}" />
-						<td id="td1"><c:out value="${product.price}" />
-						<td id="td1"><c:out value="${product.category_id}" />
-						<td id="td1"><c:out value="${product.supplier_id}" />
+					<tr >
+						<td align="center"><c:out value="${product.id}" />
+						<td ><c:out value="${product.name}" />
+						<td ><c:out value="${product.description}" />
+						<td ><c:out value="${product.price}" />
+						<td ><c:out value="${product.category_id}" />
+						<td ><c:out value="${product.supplier_id}" />
 						<td><div class="thumbnail">
 								<img height="100px" width="100px" alt="${product.id }"
 									src="<c:url value="/resources/images/${product.id }.jpg"></c:url>">
 							</div>
-						<td id="td1"><a href="addeditproduct/${product.id }"><img
+						<td ><a href="addeditproduct/${product.id }"><img
 								alt="Edit" ></a>
-						<td id="td1"><a href="adddeleteproduct/${product.id }"><img
+						<td i><a href="adddeleteproduct/${product.id }"><img
 								alt="Delete"> </a>
 					</tr>
 				</c:forEach>

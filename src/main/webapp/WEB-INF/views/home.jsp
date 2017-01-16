@@ -8,10 +8,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Page</title>
 <meta name="viewport" content="width = device-width, initial-scale = 1">
+<link rel="stylesheet" href="<c:url value="/resources/bootstrap.min.css"/>">
 <title>Home Page</title>
 
 </head>
 <body>
+
+
+
+
+
+
+
+
+
+
+<!-- **************************************************************************************************************************************************************** -->
 	<h1>Home Page</h1>
 	<!--  if user logged in these liks are not display-->
 	<c:if test="${ empty successMsg}">
@@ -20,6 +32,7 @@
 		<a href="registration">Register</a>
 		<a href="Admin"> Admin</a>
 	</c:if>
+	
 
 	<hr>
 	${successMsg} ${errorMSG }
@@ -44,6 +57,9 @@
 
 	<c:if test="${showProductpage}">
 		<jsp:include page="Product.jsp"></jsp:include></c:if>
+		
+		<c:if test="${showadminPage}">
+		<jsp:include page="Admin.jsp"></jsp:include></c:if>
 
 
 </body>
