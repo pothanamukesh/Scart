@@ -55,11 +55,11 @@ public class ProductController {
 	}
 @RequestMapping(value ="Product" )
 	public ModelAndView ProductPage(@ModelAttribute("product") Product product,BindingResult result) {
-		ModelAndView mv= new ModelAndView("/home");
+		ModelAndView mv= new ModelAndView("/Admin");
 		//mv.addObject("product", new Product());
-		mv.addObject("productList", productDAO.list());
-		mv.addObject("categoryList",categoryDAO.list());
-		mv.addObject("supplierList",supplierDAO.list());
+		mv.addObject("ProductList", productDAO.list());
+		mv.addObject("CategoryList",categoryDAO.list());
+		mv.addObject("SupplierList",supplierDAO.list());
 		mv.addObject("showProductpage", "true");
 		return mv;
 	}

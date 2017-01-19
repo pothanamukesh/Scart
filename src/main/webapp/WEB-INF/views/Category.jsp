@@ -6,10 +6,45 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Category Page</title>
+<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/css/table.css"/>">
+<style type="text/css">
+.form-control {
+  border-radius: 0px;
+  margin-top: 10px !important;
+}</style>
 </head>
 <body>
-<div class="text-center myForm">
+
+<div class="container" >
+    	<div class="modal-dialog">
+			<div class="modal-content">
+				         
+                               <div id="div-forms">
+
+		<c:url var="action" value="editcategory"></c:url>
+		<form:form action="${action}" modelAttribute="category"   id="login-form">
+		   <div class="modal-body">
+			<c:choose>
+			<c:when test="${category.id gt 0}">
+				<form:input class="form-control" path="id" readonly="true"/>
+	 			</c:when></c:choose>
+	 				<form:input class="form-control" path="name" placeholder="Enter the Name" required="required"/>
+					<form:errors path="name"></form:errors>
+					<form:input class="form-control input_text" path="description" placeholder="Address" required="required"/>
+				 <form:errors path="description"></form:errors>
+				<!-- <input type="submit" class="btn btn-primary" value="Save" />-->
+						</div><!-- model body -->
+						 <div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" value="Save">Save</button>
+                            </div>
+						</div>
+		</form:form></div></div></div></div>
+		${successmessage } 
+	
+<%--   <div class="text-center myForm">
 		<c:url var="action" value="editcategory"></c:url>
 		<form:form action="${action}" modelAttribute="category" >
 			<table>
@@ -34,7 +69,7 @@
 				</tr>
 			</table>
 		</form:form>
-	</div>
+	</div>  --%>
 	<div align="center">
 		<table class="table" style="width: 80%" border="1px">
 			<caption>Categories</caption>

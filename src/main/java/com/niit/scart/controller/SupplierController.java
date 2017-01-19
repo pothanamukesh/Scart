@@ -41,7 +41,7 @@ public class SupplierController {
 	public ModelAndView SupplierPage(@ModelAttribute("supplier") Supplier supplier,BindingResult result
 			) {
 		
-			ModelAndView mv= new ModelAndView("/home");
+			ModelAndView mv= new ModelAndView("/Admin");
 			//mv.addObject("supplier", new Supplier());
 			mv.addObject("supplierList", supplierDAO.list());
 			mv.addObject("showSupplierpage", "true");

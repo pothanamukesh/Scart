@@ -9,7 +9,7 @@ $(function() {
     var $msgAnimateTime = 150;
     var $msgShowTime = 2000;
 
-    $("form").submit(function () {
+   /* $("form").submit(function () {
         switch(this.id) {
             case "login-form":
                 var $lg_username=$('#login_username').val();
@@ -45,7 +45,7 @@ $(function() {
                 return false;
         }
         return false;
-    });
+    });*/
     
     $('#login_register_btn').click( function () { modalAnimate($formLogin, $formRegister) });
     $('#register_login_btn').click( function () { modalAnimate($formRegister, $formLogin); });

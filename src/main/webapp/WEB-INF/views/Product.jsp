@@ -6,46 +6,58 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Product Page</title>
+<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/css/table.css"/>">
+<style type="text/css">
+.form-control {
+  border-radius: 0px;
+  margin-top: 10px !important;
+}</style>
 </head>
 <body>
-<div class="text-center myForm">
+<div class="container" >
+    	<div class="modal-dialog">
+			<div class="modal-content">
+				         
+                               <div id="div-forms">
+
 		<c:url var="action" value="editproduct"></c:url>
 		<form:form action="${action}" modelAttribute="product"
 			enctype="multipart/form-data" method="post">
-			<table>
+			<table align="center">
 				<c:choose>
 					<c:when test="${product.id gt 0}">
 						<tr>
 							<td>ID:</td>
-							<td><form:input class="input1" path="id" readonly="true" /></td>
+							<td><form:input class="form-control" path="id" readonly="true" /></td>
 						</tr>
 					</c:when>
 				</c:choose>
 				<tr>
 					<td>Name:</td>
-					<td><form:input class="input1" path="name" required="true"/></td>
+					<td><form:input class="form-control" path="name" required="true"/></td>
 				</tr>
 				<tr>
 					<td>Description:</td>
-					<td><form:input class="input1" path="description" required="true"/></td>
+					<td><form:input class="form-control" path="description" required="true"/></td>
 				</tr>
 				<tr>
 					<td>Price:</td>
-					<td><form:input class="input1" type="number" path="price" required="true" min="1" /></td>
+					<td><form:input class="form-control" type="number" path="price" required="true" min="1" /></td>
 				</tr>
 				<tr>
 				<td>Category:</td>
-				<td><form:select path="id" required="true">
-				<c:forEach items="${categoryList}" var="category">
-								<form:option class="input1" value="${category.id}">${category.name}</form:option>
+				<td><form:select path="category_id" required="true">
+				<c:forEach items="${CategoryList}" var="category">
+								<form:option class="form-control" value="${category.id}">${category.name}</form:option>
 							</c:forEach>
 								</form:select></td></tr>
 						<tr>
 								<td>Supplier:</td>
-				<td><form:select path="id" required="true">
-				<c:forEach items="${supplierList}" var="supplier">
-								<form:option class="input1"  value="${supplier.id}">${supplier.name}</form:option>
+				<td><form:select path="supplier_id" required="true">
+				<c:forEach items="${SupplierList}" var="supplier">
+								<form:option class="form-control"  value="${supplier.id}">${supplier.name}</form:option>
 							</c:forEach>
 								</form:select></td></tr>
 				<tr>
@@ -54,31 +66,33 @@
 							class=" btn btn-default btn-block form-control" path="image"
 							required="true" /></td>
 				</tr>
-				<tr>
-					<td></td>
-					<td><input type="submit" class="btn btn-primary" value="Save" /></td>
-				</tr>
-			</table>
-		</form:form>
+				</table>
+			<div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" value="Save">Save</button>
+                            </div>
+						</div>
+		</form:form></div></div>	</div>
+			${successmessage } 
 	</div>
 	<div align="center">
-		<table class="table1" style="width: 80%" border="1px">
+		<table class="table" style="width: 80%" border="1px">
 			<caption>Products</caption>
 			<thead>
-				<tr id="tr1">
+				<tr >
 					<th>Product Id</th>
 					<th>Product Name</th>
 					<th>Product Description</th>
 					<th>Product Price</th>
-					<th>Category</th>
-					<th>Supplier</th>
+					<th>Category ID</th>
+					<th>Supplier ID</th>
 					<th>Image</th>
 					<th>Edit</th>
 					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${productList}" var="product">
+				<c:forEach items="${ProductList}" var="product">
 					<tr >
 						<td align="center"><c:out value="${product.id}" />
 						<td ><c:out value="${product.name}" />

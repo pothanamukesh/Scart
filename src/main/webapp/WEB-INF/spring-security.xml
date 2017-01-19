@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:security="http://www.springframework.org/schema/security"
+xmlns:beans="http://www.springframework.org/schema/beans"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security.xsd">
+<security:http auto-config="true" use-expressions="true">
+    
+    <security:intercept-url pattern="/Product/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/addeditproduct/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/addupdateproduct/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/adddeleteproduct/**"   access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/Category/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/addeditcategory/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/adddeletecategory/**"   access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/Supplier/**"  access="hasRole('ROLE_ADMIN')" />
+    <security:intercept-url pattern="/addeditsupplier/**"  access="hasRole('ROLE_ADMIN')" />
+     <security:intercept-url pattern="/adddeletesupplier/**"   access="hasRole('ROLE_ADMIN')" /> 
+   <security:intercept-url pattern="/editorder/**"  access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/deleteitem/**" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/pay/**"  access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/placeorder/**" access="hasRole('ROLE_USER')" />
+    
+    
+    <security:form-login login-page="/login"
+        default-target-url="/" login-processing-url="/perform_login"
+        authentication-failure-url="/"
+        authentication-success-forward-url="/login_session_attributes" />
+        
+    <security:logout logout-url="/perform_logout"
+    	invalidate-session="true" logout-success-url="/"/>
+    	
+    <security:csrf disabled="true" />
+    
+   <!--<security:session-management>
+    <security:concurrency-control max-sessions="1"/>
+    </security:session-management> -->
+    
+</security:http>	
+
+	<security:authentication-manager>
+    	<security:authentication-provider>
+        	<security:jdbc-user-service
+           		data-source-ref="dataSource"
+            	users-by-username-query="select username,password,enabled from user where username=?"
+            	authorities-by-username-query="select username, role from user where username =?" />
+    	</security:authentication-provider>
+	</security:authentication-manager>
+</beans:beans>

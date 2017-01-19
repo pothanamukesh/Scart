@@ -46,12 +46,12 @@ public class UserController {
 
 	HttpSession session;
 
-	@RequestMapping(value = "/validate", method = RequestMethod.POST)
-	public ModelAndView validate(@RequestParam(value = "username") String userid,
+/*	@RequestMapping(value = "/validate", method = RequestMethod.POST)
+	public ModelAndView validate(@RequestParam(value = "i") int id,
 			@RequestParam(value = "password") String password) {
 		log.debug("staring of validate Method............V..........!");
 		ModelAndView mv = new ModelAndView("/home");
-		user = userDAO.validate(userid, password);
+		user = userDAO.validate(id, password);
 		if (user != null) {
 			log.debug("valide credential.........VC...........!");
 			session.setAttribute("loggedInUser", user.getUsername());
@@ -93,7 +93,7 @@ public class UserController {
 		mv.addObject("logoutmsg", "You Successfully Logout.......................!");
 		mv.addObject("loggedout","true");
 		return mv;
-	}
+	}*/
 	@RequestMapping(value="adduser")
 	public String addsupplier(@ModelAttribute("user") User  user, Model m,RedirectAttributes attributes)
 	{

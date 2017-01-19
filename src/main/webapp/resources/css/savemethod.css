@@ -1,12 +1,13 @@
+@CHARSET "ISO-8859-1";
 @charset "utf-8";
 
    
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-* {
+/** {
     font-family: 'Roboto', sans-serif;
 }
-
+*/
 #login-modal .modal-dialog {
     width: 350px;
 }
@@ -14,30 +15,8 @@
 #login-modal input[type=text], input[type=password] {
 	margin-top: 10px;
 }
-
-#div-login-msg,
-#div-lost-msg,
-#div-register-msg {
-    border: 1px solid #dadfe1;
-    height: 30px;
-    line-height: 28px;
-    transition: all ease-in-out 500ms;
-}
-
-#div-login-msg.success,
-#div-lost-msg.success,
-#div-register-msg.success {
-    border: 1px solid #68c3a3;
-    background-color: #c8f7c5;
-}
-
-#div-login-msg.error,
-#div-lost-msg.error,
-#div-register-msg.error {
-    border: 1px solid #eb575b;
-    background-color: #ffcad1;
-}
-
+.text_marg
+{margin-top: 100px;}
 #icon-login-msg,
 #icon-lost-msg,
 #icon-register-msg {
@@ -47,7 +26,7 @@
     text-align: center;
     background-color: #dadfe1;
     margin-right: 5px;
-    transition: all ease-in-out 500ms;
+  
 }
 
 #icon-login-msg.success,
@@ -61,15 +40,6 @@
 #icon-register-msg.error {
     background-color: #eb575b !important;
 }
-
-#img_logo {
-    max-height: 100px;
-    max-width: 100px;
-}
-
-/* #########################################
-   #    override the bootstrap configs     #
-   ######################################### */
 
 .modal-backdrop.in {
     filter: alpha(opacity=50);
@@ -94,28 +64,13 @@
     padding: 5px 15px 5px 15px;
 }
 
-.modal-footer {
-    padding: 15px 15px 15px 15px;
-    text-align: left;
-    border-top: 0px;
-}
 
-.checkbox {
-    margin-bottom: 0px;
-}
 
 .btn {
     border-radius: 0px;
 }
 
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-    outline: none;
-}
+
 
 .btn-lg, .btn-group-lg>.btn {
     border-radius: 0px;
@@ -137,6 +92,7 @@
 
 .form-control {
   border-radius: 0px;
+  margin-top: 10px !important;
 }
 /* CSS Document */
 
