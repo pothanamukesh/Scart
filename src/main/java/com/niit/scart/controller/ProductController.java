@@ -20,7 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.niit.scartbackend.dao.CategoryDAO;
 import com.niit.scartbackend.dao.ProductDAO;
 import com.niit.scartbackend.dao.SupplierDAO;
+import com.niit.scartbackend.model.Category;
 import com.niit.scartbackend.model.Product;
+import com.niit.scartbackend.model.Supplier;
 
 @Controller
 public class ProductController {
@@ -28,6 +30,10 @@ public class ProductController {
 	ProductDAO productDAO;
 	@Autowired
 	Product product;
+	@Autowired
+	Category category;
+	@Autowired
+	Supplier supplier;
 	@Autowired
 	CategoryDAO categoryDAO;
 	@Autowired
@@ -57,6 +63,9 @@ public class ProductController {
 	public ModelAndView ProductPage(@ModelAttribute("product") Product product,BindingResult result) {
 		ModelAndView mv= new ModelAndView("/Admin");
 		//mv.addObject("product", new Product());
+		mv.addObject("Category", category);
+		
+		mv.addObject("supplier",supplier);
 		mv.addObject("ProductList", productDAO.list());
 		mv.addObject("CategoryList",categoryDAO.list());
 		mv.addObject("SupplierList",supplierDAO.list());

@@ -67,24 +67,11 @@
       		   <ul class="nav-categeory ullink ">
                  <li class="categeory dopdown">
                  <c:forEach items="${CategoryList}" var="category" >
-                 <a href=#" class="alink dropdown-toggle"data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><c:out value="${category.name}" />
-                <span class="caret"></span></a>
-								<%-- <ul class="dropdown-menu">
-								<li>
-						<c:forEach items="${navproducts}" var="product" >
-						
-						 <a href=#" class="alink"><c:out value="${product.id}" /></a>
-						 <a href=#" class="alink"><c:out value="${product.names}" /></a>
-							</c:forEach></li>
-                    	</ul>	 --%>	
-													
-					</c:forEach>
-                <!--  <a class="alink"><span class="">Electronics</span></a>
-                 </li>
-                 <li class="categeory">
-                 <a class="alink"><span class="">Electronics</span></a>
-                 </li> -->
-        		 </ul><!--ul end-->        
+                 <a href="navproducts/${category.id}"><c:out value="${category.name}" />
+                </a>
+																
+					</c:forEach></li>
+                   		 </ul><!--ul end-->        
    </div><!--nav-shop-->
          </div><!--left-->
            <div class="nav-right">
@@ -97,8 +84,21 @@
            <span class="nav-line-1">Try</span>
            <span class="nav-line-2">Prime<span class="nav-icon nav-arrow" style="visibility:visible"></span></span>
            </a>
-           	<a href="Admin"> Admin</a>
-           </div><!--nav tools-->
+           <sec:authorize access="!isAuthenticated()">
+    
+			      <li><a href="Registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			    <!--   <li><a href="Login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+			      </sec:authorize>
+             </ul>
+           
+      <sec:authorize access="isAuthenticated()">
+      
+     <ul class="nav navbar-nav navbar-right">
+		      <li><a href="Cart"><span class="glyphicon glyphicon-user"></span>Cart</a></li>
+			<li><a href="<c:url value="/perform_logout" />">Logout</a></li>
+			<li><a href="">Welcome  <sec:authentication property="principal.username"/></a></li></ul>
+		</sec:authorize>
+           	 </div><!--nav tools-->
      </div><!--nav right--> 
         
   </div><!--nav-main-->
@@ -149,6 +149,8 @@
 		
 		<c:if test="${showadminPage}">
 		<jsp:include page="Admin.jsp"></jsp:include></c:if>
+		<c:if test="${Clickedcatproduct}">
+      <jsp:include page="catproducts.jsp"></jsp:include></c:if> 
 		
 		<c:choose>
 		<c:when test="${Clickedshowproduct}">
