@@ -12,6 +12,7 @@
 <title>Home Page</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/HomeStyle.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/imagegallery.css"/>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -162,32 +163,32 @@
 			<c:import url="/WEB-INF/views/catproducts.jsp"></c:import>
 		</c:when>
 	</c:choose>
+	<c:choose>
+	<c:when test="${UserClickedCart}">
+			<c:import url="/WEB-INF/views/CartPage.jsp"></c:import>
+		</c:when>
+	</c:choose>
+	</div>
 	<!-- ########################################################################################### -->
-	<c:forEach items="${productList}" var="product">
-			<tr>
 
 
-				<td>
-					<!-- --<div class="thumbnail">-->
-					<div class="col-md-4">
-						<a href="ShowProduct/${product.id}"> <img height="150px"
-							width="150px" alt="${product.id }"
+
+		<c:forEach items="${productList}" var="product" end="3">
+			<div class="responsive">
+              <div class="img">
+						<a href="ShowProduct/${product.id}"> <img height="200px"
+							width="200px" alt="${product.id }"
 							src="<c:url value="/resources/images/${product.id }.jpg"></c:url>"></a>
-
-						<td><c:url var="action" value="addtocart/${product.id}"></c:url>
-							<form:form action="${action}" modelAttribute="cart">
-								<td id="td1"><c:out value="${product.name}" /><br>
-								<td id="td1"><c:out value="${product.price}" /> <input
-									type="submit" class="btn btn-primary" value="Add To Cart" /><br>
-							</form:form></td>
-						<br>
-
-					</div>
-			</tr>
-			</td>
+				
+			<div class="desc">
+			<c:out value="${product.name}" />
+			<c:url var="action" value="addtocart/${product.id}/${userid }"></c:url>
+			<form:form action="${action}" modelAttribute="cart">
+			<input type="submit" class="btn btn-primary" value="Add To Cart" />
+			</form:form>
+			</div>
+			</div>
+			</div>
 		</c:forEach>
-	
-
-</div>
 </body>
 </html>

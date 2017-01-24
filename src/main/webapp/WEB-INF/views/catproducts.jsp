@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
   <title>category list</title>
   <meta charset="utf-8">
@@ -15,30 +13,22 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- <style>
-footer {
-    
-    margin-top: 50px;
-    
-} 
-body {
-width:100%;
-}
   
-  </style>
-
+ <style>
+{
+   
+    background-color: #ffe6e6  ;
+}
+</style>
 </head>
-<body>
-
-
-<h1><font color=green></font></h1>
-
+<body > 
 
 <c:forEach items="${navproducts}" var="product">
 		<!--  <div class="row"> -->
      <div class="col-xs-3" class="thumbnail">
  	 			 
-	<a href="ShowProduct/${product.id}" >
+	<a href="ShowProduct/${product.id}" > <img height="200px" width="200px" alt="${product.id }"
+	src="<c:url value="/resources/images/${product.id }.jpg"></c:url>"></a>
   <div class="desc">
          Product Id : <c:out value="${product.id}" /><br>
          Product Name : <c:out value="${product.name }"/>
@@ -51,9 +41,11 @@ width:100%;
 							</c:forEach>
 	<c:choose>
 		<c:when test="${UserClickedCart}">
-			<c:import url="/WEB-INF/views/Cart.jsp"></c:import>
+			<c:import url="/WEB-INF/views/CartPage.jsp"></c:import>
 		</c:when>
 	</c:choose>
+
+
 
 </body>
 </html>

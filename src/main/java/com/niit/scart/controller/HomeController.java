@@ -89,5 +89,5 @@ Logger log=LoggerFactory.getLogger(HomeController.class);
 		m.addAttribute("navproducts", productDAO.navproduct(id));
 		return "catproducts";
 	}
-	
+
 }// home matheds

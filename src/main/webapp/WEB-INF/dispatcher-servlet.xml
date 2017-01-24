@@ -1,7 +1,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-	 xmlns:flow="http://www.springframework.org/schema/webflow-config"
+	xmlns:flow="http://www.springframework.org/schema/webflow-config"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
@@ -11,22 +11,27 @@
         http://www.springframework.org/schema/context/spring-context-4.0.xsd
         http://www.springframework.org/schema/webflow-config
         http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.4.xsd">
- 
- <context:component-scan base-package="com.niit" />
- 
- <mvc:resources mapping="/resources/**" location="/resources/" />
- 
- <mvc:annotation-driven />
- 
- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
- <property name="prefix"><value>/WEB-INF/views/</value>
- </property>
- <property name="suffix">
-    <value>.jsp</value>
- </property>
- </bean>
- <bean id="multipartResolver"
+
+	<context:component-scan base-package="com.niit" />
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<mvc:annotation-driven />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="20000000" />
 	</bean>
+	
+	<import resource="webflow-config.xml" />
+
 </beans>

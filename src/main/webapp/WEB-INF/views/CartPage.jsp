@@ -46,7 +46,7 @@ body {
 			</sec:authorize>
 			<sec:authorize access="isAuthenticated()">
 				<ul class="nav navbar-nav navbar-right" style="margin-bottom: 0px;">
-					<li><a href="Cart1"><p>
+					<li><a href="Cart"><p>
 								CART <span class="glyphicon glyphicon-shopping-cart"></span>
 							</p></a></li>
 					<li><a href="<c:url value="/perform_logout" />"><p>
@@ -147,7 +147,7 @@ body {
 						<div class="panel-footer">
 							<div class="row text-center">
 								<div class="col-xs-3">
-									<a href="Register" class="btn btn-primary btn-sm btn-block">Continue
+									<a href="home" class="btn btn-primary btn-sm btn-block">Continue
 										Shopping</a>
 								</div>
 								<c:if test="${empty EmptyCart}">

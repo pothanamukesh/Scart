@@ -33,7 +33,7 @@ width:100%;
 		<h2><c:out value="${product.name }"/></h2>
 			<div class="col-xs-6 w3-animate-left">
 				<div class="img">
-					<img height="100px" width="100px" alt="${product.id }"src="<c:url value="/resources/images/${product.id}.jpg"></c:url>">
+					<img height="100px" width="100px" alt="${product.id }"src="<c:url value="/resources/images/${product.id }.jpg"></c:url>">
 					<div class="desc">
 									
 					</div>

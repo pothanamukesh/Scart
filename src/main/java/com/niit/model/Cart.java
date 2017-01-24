@@ -1,4 +1,4 @@
-package model;
+  package com.niit.model;
 
 import java.io.Serializable;
 
