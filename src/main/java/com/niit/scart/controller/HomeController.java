@@ -57,6 +57,8 @@ Logger log=LoggerFactory.getLogger(HomeController.class);
 	    session.setAttribute("SupplierList", supplierDAO.list());
 	    session.setAttribute("ProductList",productDAO.list());
 		ModelAndView mv = new ModelAndView("home");
+/*		mv.addObject("UserClickedshowproduct", "true");*/
+		mv.addObject("Clickedcatproduct", "true");
 		log.debug("Starting of  the method home page.......H.......!");
 		return mv;
 	}
@@ -80,14 +82,20 @@ Logger log=LoggerFactory.getLogger(HomeController.class);
 	  @RequestMapping(value ="ShowProduct/{id}" )
 	    public String ShowProduct(@PathVariable("id") int id,RedirectAttributes attributes,Model m) {
 	        m.addAttribute("UserClickedshowproduct", "true");
-	    	m.addAttribute("IndividualProduct", productDAO.getproduct(id));
+	        m.addAttribute("IndividualProduct", productDAO.getproduct(id));
 	    	return "ShowProduct";
 	    }
-	@RequestMapping(value="navproducts/{id}")
+/*	@RequestMapping(value="navproducts/{id}")
 	public String navproduct(Model m,@PathVariable("id") int id ){
 		m.addAttribute("Clickedcatproduct", "true");
 		m.addAttribute("navproducts", productDAO.navproduct(id));
-		return "catproducts";
-	}
+		return "redirect:/";
+	}*/
+		@RequestMapping(value="navproducts/{id}")
+		public String navproduct(Model m,@PathVariable("id") int id,RedirectAttributes attributes ){
+			/*m.addAttribute("Clickedcatproduct", "true");*/
+			attributes.addFlashAttribute("navproducts", productDAO.navproduct(id));
+			return "redirect:/";
+		}
 
 }// home matheds

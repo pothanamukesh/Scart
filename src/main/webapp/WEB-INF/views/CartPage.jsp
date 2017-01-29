@@ -1,176 +1,96 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-
-<!DOCTYPE html>
+    pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Admin page</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style>
-body {
-	background: #DCDDDF
-		url(http://cssdeck.com/uploads/media/items/7/7AF2Qzt.png);
-	color: #000;
-	font: 14px Arial;
-	margin: 0 auto;
-	padding: 0;
-	position: relative;
-}
-</style>
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+ <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> 
+<link rel="stylesheet" href="<c:url value="/resources/css/cart.css"/>">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CartPage</title>
 </head>
-<body style="background-color: #CCCCCC">
-
-
-	<div class="text-center">
-		
-	</div>
-
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<sec:authorize access="!isAuthenticated()">
-			</sec:authorize>
-			<sec:authorize access="isAuthenticated()">
-				<ul class="nav navbar-nav navbar-right" style="margin-bottom: 0px;">
-					<li><a href="Cart"><p>
-								CART <span class="glyphicon glyphicon-shopping-cart"></span>
-							</p></a></li>
-					<li><a href="<c:url value="/perform_logout" />"><p>
-								LOGOUT<span class="glyphicon glyphicon-log-out"></span>
-							</p></a></li>
-					<li><a href="">WELCOME<sec:authentication
-								property="principal.username" /></a></li>
-				</ul>
-			</sec:authorize>
-
-			</ul>
-		</div>
-	</nav>
-	<div id="cart">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-2"></div>
-				<div class="col-xs-8">
-					<div class="panel panel-primary ">
-						<div class="panel-heading">
-							<div class="panel-title">
+<body>
+<h1 align="center" style="margin-top:60px;">Your Cart</h1>
+${emptycart}
+<div class="container">
+	<table id="cart" class="table table-hover table-condensed">
+    				<thead>
+						<tr>
+							<th style="width:50%">Product</th>
+							<th style="width:10%">Price</th>
+							<th style="width:8%">Quantity</th>
+							<th style="width:22%" class="text-center">Update</th>
+							<th style="width:10%"></th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach items="${CartList }" var="cart">
+						<tr>
+							<td data-th="Product">
 								<div class="row">
-									<div class="col-xs-6">
-										<h5 style="color: white">
-											<span class="glyphicon glyphicon-shopping-cart">Cart</span>
-										</h5>
-									</div>
-									<div class="col-xs-3"></div>
-								</div>
-							</div>
-						</div>
-						<div class="panel-body">
-
-							<div class="row">
-								<div class="col-xs-5">
-									<label class="form-control input-sm">Product Details</label>
-								</div>
-
-								<div class="col-xs-2 text-right">
-									<label class="form-control input-sm"> Total Price</label>
-								</div>
-
-								<div class="col-xs-4">
-									<div class="col-xs-6">
-										<label class="form-control input-sm">Quantity</label>
-									</div>
-									<div class="col-xs-6">
-										<label class="form-control input-sm">Update</label>
+									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+									<div class="col-sm-10">
+										<h4 class="nomargin"><c:out value="${cart.productname }"/></h4>
 									</div>
 								</div>
-								<div class="col-xs-1">
-									<a href="#" class="form-control input-sm"><span
-										class="glyphicon glyphicon-trash"> </span></a>
-								</div>
-							</div>
-							<hr>
-								<c:if test="${!empty CartList}">
-								<c:forEach items="${CartList}" var="cart">
-									<div class="row">
-										<div class="col-xs-5">
-											<div class="col-xs-6">
-												<a href="IndividualItem/${cart.productid}"> <img
-													height="72px" width="72px" alt="${cart.productid}"
-													src="<c:url value="/resources/images/${cart.productid}.jpg"></c:url>">
-												</a>
-											</div>
-											<div class="col-xs-6" style="padding-top: 22px">
-												<label class="form-control input-sm">${cart.productname}</label>
-											</div>
-										</div>
-										<div class="col-xs-2 text-right" style="padding-top: 22px">
-											<label class="form-control input-sm">${cart.price}</label>
-										</div>
+							</td>
+							<td data-th="Price"><c:out value="${cart.price }"/></td>
+							<td data-th="Quantity"><c:out value="${cart.quantity }"/></td>
+							<td data-th="Quantity">
+							 <c:url var="action" value="editorder/${cart.id}"></c:url>
+		                       <form:form action="${action}" name="formID" modelAttribute="cart" method="post">
+								<form:input type="number" class="form-control text-center" path="quantity" id="sel1" name="quantity" onchange="checkAndSubmit()" />
+								</form:form>
+							</td>
+							<%-- <td data-th="Subtotal" class="text-center"><c:out value="${cart.subtotal}"/></td> --%>
+							<td class="actions" data-th="">
+								<a href="delete/${cart.id}"><button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>								
+							</td>
+						</tr>
+						
+						</c:forEach>
+					</tbody>
+					<tfoot>
+						<tr class="visible-xs">
+							<td class="text-center"><strong>Total </strong></td>
+						</tr>
+						<tr>
+							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xs text-center"><strong>Total:<c:out value="${cartprice}"></c:out> </strong></td>
+							<td><a href="checkoutFlow" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+						</tr>
+					</tfoot>
+				</table>
+</div>
 
-										<div class="col-xs-4" style="padding-top: 22px">
-											<form action="editorder/${cart.id}">
-												<div class="col-xs-6">
-													<input type="text" class="form-control input-sm"
-														value="${cart.quantity}" name="quantity">
-												</div>
-												<div class="col-xs-6">
-													<button type="submit"
-														class="btn btn-default btn-sm btn-block">Update
-														cart</button>
-												</div>
 
-											</form>
-										</div>
-										<div class="col-xs-1" style="padding-top: 22px">
-											<a href="delete/${cart.id}" class="form-control input-sm"><span
-												class="glyphicon glyphicon-trash"> </span></a>
-										</div>
-									</div>
-									<hr>
-								</c:forEach>
-							</c:if>
-						</div>
-						<div class="panel-footer">
-							<div class="row text-center">
-								<div class="col-xs-3">
-									<a href="home" class="btn btn-primary btn-sm btn-block">Continue
-										Shopping</a>
-								</div>
-								<c:if test="${empty EmptyCart}">
-									<div class="col-xs-6">
-										<h4 class="text-right">Total : Rs ${cartprice}</h4>
-									</div>
-									<form action="placeorder">
 
-										<div class="col-xs-3">
-											<a href=checkoutFlow class="btn btn-success btn-block">
-												Checkout</a>
-										</div>
-
-									</form>
-								</c:if>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--  -->
-
+ 
+<%-- <form:select >
+<form:option value="1">1</form:option>
+<form:option value="2">2</form:option>
+<form:option value="3">3</form:option>
+<form:option value="4">4</form:option>
+<form:option value="5">5</form:option>
+<form:option value="6">6</form:option>
+<form:option value="7">7</form:option>
+<form:option value="8">8</form:option>
+<form:option value="9">9</form:option>
+<form:option value="10">10</form:option>
+</form:select> --%>
+<script type="text/javascript">
+function checkAndSubmit()
+{
+  if (document.getElementById('sel1').selectedIndex > -1)
+  {
+      document.formID.submit();
+     // alert('both have been selected!');
+  }
+}
+</script>
 </body>
 </html>

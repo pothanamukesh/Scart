@@ -13,6 +13,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="<c:url value="/resources/js/Login.js" />"></script>
+<style>#myCarousel{display:none;}</style>
 
 </head>
 
@@ -20,7 +21,7 @@
      <!--    <p class="text-center"><a href="#" class="btn btn-primary btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Login</a></p> -->
 
 <!-- BEGIN # MODAL LOGIN -->
-<!-- <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" > -->
+<!-- <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >  -->
     	<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header" align="center">
@@ -58,6 +59,7 @@
                             </div>
 				        </div>
                     </form>
+                    ${error}
                     <!-- End # Login Form -->
                     
                     <!-- Begin | Lost Password Form -->
@@ -82,7 +84,7 @@
                     <!-- End | Lost Password Form -->
                     
                     <!-- Begin | Register Form -->
-                    <form id="register-form" style="display:none;">
+                    <form  id="register-form" style="display:none;">
             		    <div class="modal-body">
 		    				<div id="div-register-msg">
                                 <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
@@ -109,8 +111,18 @@
                 
 			</div>
 		</div>
-<!-- 	</div> -->
+<!-- 	</div>  -->
     <!-- END # MODAL LOGIN -->
+    
+    <script>
+		  $(document).ready(function(){
+			  
+			  $('#mylogin').click(function(){
+				  $('#myCarousel').hide();
+				 
+			  });
+		  });
+		</script>
 
 
 </body>

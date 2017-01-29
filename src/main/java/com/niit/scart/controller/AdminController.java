@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.niit.scartbackend.dao.CartDAO;
 import com.niit.scartbackend.dao.CategoryDAO;
 import com.niit.scartbackend.dao.ProductDAO;
 import com.niit.scartbackend.dao.SupplierDAO;
@@ -40,6 +41,8 @@ public class AdminController {
 	private CategoryDAO categoryDAO;
 	@Autowired
 	private UserDAO userDAO;
+	@Autowired
+	CartDAO cartDAO;
 	
 	@RequestMapping(value ="Admin" )
 	public ModelAndView AdminPage() {
@@ -64,7 +67,7 @@ public class AdminController {
 		     if (authority.getAuthority().equals(role)) 
 		     {
 		    	 session.setAttribute("UserLoggedIn", "true");
-		    	// session.setAttribute("cartsize",cartDAO.getsize((int) session.getAttribute("userid")));
+		    	 //session.setAttribute("cartsize",cartDAO.cartsize((int)session.getAttribute("userid")));
 		    	 return "redirect:/";
 		     }
 		     else 
@@ -73,13 +76,13 @@ public class AdminController {
 			 return "/Admin";
 		     }
 	}
-		return "/Home";
+		return "/home";
 	
 	}
 	@RequestMapping(value="/loginError")
 	public String errorpage(RedirectAttributes attributes){
 		attributes.addFlashAttribute("error", "The Username or Password you entered is incorrect please try again");
-		return "redirect:/login";
+		return "home";
 	}
 	
 	

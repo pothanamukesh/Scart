@@ -1,0 +1,68 @@
+@CHARSET "ISO-8859-1";
+
+			html, body {
+				height: 100%;
+				padding: 0;
+				margin: 0;
+			}
+			body {
+				min-height: 600px;
+				background-color: #e6e6e6;
+			}
+			body * {
+				font-family: Arial, Geneva, SunSans-Regular, sans-serif;
+				font-size: 14px;
+				color: #333;
+				line-height: 22px;
+			}
+			
+			#wrapper {
+				width: 100%;
+				height: 200px;
+				position: absolute;
+				top: 100px;
+				left: 0;
+			}
+			#carousel {
+				width: 100%;
+				overflow: hidden;
+			}
+			#carousel img {
+				display: block;
+				float: left;
+			}
+
+			#source {
+				text-align: center;
+				width: 400px;
+				margin: 0 0 0 -200px;
+				position: absolute;
+				bottom: 10px;
+				left: 50%;
+			}
+			#source, #source a {
+				color: #999;
+				font-size: 12px;
+			}
+			
+			#donate-spacer {
+				height: 100%;
+			}
+			#donate {
+				border-top: 1px solid #999;
+				width: 750px;
+				padding: 50px 75px;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			#donate p, #donate form {
+				margin: 0;
+				float: left;
+			}
+			#donate p {
+				width: 650px;
+			}
+			#donate form {
+				width: 100px;
+			}
+	

@@ -20,7 +20,8 @@
     background-color: #ffe6e6  ;
 }
 </style>
-</head>
+<!-- <style>#myCarousel{display:none;}</style>
+ --></head>
 <body > 
 
 <c:forEach items="${navproducts}" var="product">
@@ -32,7 +33,7 @@
   <div class="desc">
          Product Id : <c:out value="${product.id}" /><br>
          Product Name : <c:out value="${product.name }"/>
-   <c:url var="action" value="addtocart/${product.id}"></c:url>
+   <c:url var="action" value="addtoCart/${userid}/${product.id}"></c:url>
    <form:form action="${action}" commandName="cart">
    <input type="submit" class="btn btn-primary" value="Add To Cart" />
    </form:form>

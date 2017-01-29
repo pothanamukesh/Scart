@@ -27,12 +27,14 @@ http://www.springframework.org/schema/security/spring-security.xsd">
     <security:intercept-url pattern="/adddeletecategory/**"   access="hasRole('ROLE_ADMIN')" />
     <security:intercept-url pattern="/Supplier/**"  access="hasRole('ROLE_ADMIN')" />
     <security:intercept-url pattern="/addeditsupplier/**"  access="hasRole('ROLE_ADMIN')" />
-     <security:intercept-url pattern="/adddeletesupplier/**"   access="hasRole('ROLE_ADMIN')" /> 
-   <security:intercept-url pattern="/editorder/**"  access="hasRole('ROLE_USER')" />
+     <security:intercept-url pattern="/adddeletesupplier/**"   access="hasRole('ROLE_ADMIN')" />
+      
+        <security:intercept-url pattern="/editorder/**"  access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/deleteitem/**" access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/pay/**"  access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/placeorder/**" access="hasRole('ROLE_USER')" />
-    
+		
+	  
     
     <security:form-login login-page="/login"
         default-target-url="/" login-processing-url="/perform_login"

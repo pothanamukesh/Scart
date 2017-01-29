@@ -49,6 +49,7 @@ width:100%;
 						</div>
 						
 						<div class="form-group">
+						
 							 <input type="text" class="form-control" value="Rs. ${product.price}" readonly="readonly"><br>
 							 <input type="submit" class="btn btn-primary" value="Add To Cart" />
 						</div>

@@ -35,7 +35,7 @@ public class CartController {
 	 
 	 public static final Logger log=LoggerFactory.getLogger(CartController.class);
 	 
-/*	 @RequestMapping(value="/Cart")
+@RequestMapping(value="/Cart1")
 	 public ModelAndView Cartpage(HttpSession session)
 	 {
 	  ModelAndView  mv=new ModelAndView("home");
@@ -43,15 +43,15 @@ public class CartController {
 	  mv.addObject("categoryList", categoryDAO.list());
 	  return mv;
 	  
-	 }*/
+	 }
 	 int q;
 	 
-	 @RequestMapping(value={"addtocart/{id}","navproducts/addtocart/{id}"})
-	 public String addTOCart(@ModelAttribute("cart")Cart cart,BindingResult result,@PathVariable("id") int productid){
+	 @RequestMapping(value={"addtocart/{id}","navproducts/addtocart/{id}","addtoCart/{userid}/{id}"})
+	 public String addTOCart(@ModelAttribute("cart")Cart cart,BindingResult result,@PathVariable("userid") int userid,@PathVariable("id") int productid,HttpSession session){
 	 
 	  log.info("Cart operation start");
-	  double p;
-	  if(cartDAO.getproduct(productid)==null){
+	  long p;
+	  if(cartDAO.getproduct(productid,userid)==null){
 	   Cart cart2= new Cart(); 
 	   Product product = productDAO.get(productid);
 	   cart2.setProductid(product.getId());
@@ -60,11 +60,13 @@ public class CartController {
 	   cart2.setQuantity(1);
 	   q=cart2.getQuantity();
 	   cart2.setStatus("C");
-	  /* cart2.setUserid((int) session.getAttribute("userid"));*/
-	   cartDAO.save(cart2);
+	   cart2.setUserid(userid);
+	 // cart2.setUserid(((int) session.getAttribute("userid"));
+	   session.setAttribute("cartsize", cartDAO.cartsize( (Integer) session.getAttribute("userid")));
+	   cartDAO.saveorupdate(cart2);
 	            return "redirect:Cart";
 	  }else{
-	   Cart cart1 = cartDAO.getproduct(productid);
+	   Cart cart1 = cartDAO.getproduct(productid,userid);
 	   Product product1 = productDAO.get(productid);
 	   q=cart1.getQuantity();
 	   cart1.setStatus("C");
@@ -74,7 +76,8 @@ public class CartController {
 	   p=q*p;
 	 cart1.setQuantity(q);
 	 cart1.setPrice(p);
-	cartDAO.update(cart1);
+	// cart1.setUserid(userid);
+	cartDAO.saveorupdate(cart1);
 	System.out.println("opeartion over");
 
 	log.info("cart operaiton over");
@@ -101,8 +104,8 @@ public class CartController {
 			Product p = productDAO.get(cart.getProductid());
 			cart.setQuantity(q);
 			cart.setPrice(q * p.getPrice());
-			cartDAO.save(cart);
-			session.setAttribute("cartsize", cartDAO.cartsize((Integer) session.getAttribute("userId")));
+			cartDAO.saveorupdate(cart);
+			session.setAttribute("cartsize", cartDAO.cartsize((Integer) session.getAttribute("userid")));
 			return "redirect:/Cart";
 		}
 	 
@@ -114,7 +117,7 @@ public class CartController {
 	   mv.addObject("emptycart","Sorry your shopping cart is empty");
 	  }else{
 	  mv.addObject("CartList", cartDAO.list());
-	  //mv.addObject("cartprice", cartDAO.CartPrice((Integer) session.getAttribute("userId")));
+	  mv.addObject("cartprice", cartDAO.CartPrice((Integer) session.getAttribute("userid")));
 	  }
 	  mv.addObject("UserClickedCart","true");
 	  return mv;
@@ -134,7 +137,6 @@ public class CartController {
 	 }
 	 /*@RequestMapping(value="navproducts/{id}")
 	    public String navproduct(Model m,@PathVariable("id") int id ){
-
 	    	m.addAttribute("Clickedcatproduct", "true");
 	    	m.addAttribute("navproducts", productDAO.navproduct(id));
 	    	return "Cart";
