@@ -20,8 +20,8 @@
     background-color: #ffe6e6  ;
 }
 </style>
-<!-- <style>#myCarousel{display:none;}</style>
- --></head>
+<!-- <style>#myCarousel{display:none;}</style> -->
+ </head>
 <body > 
 
 <c:forEach items="${navproducts}" var="product">

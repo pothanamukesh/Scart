@@ -97,5 +97,15 @@ Logger log=LoggerFactory.getLogger(HomeController.class);
 			attributes.addFlashAttribute("navproducts", productDAO.navproduct(id));
 			return "redirect:/";
 		}
-
+		
+		/*@RequestMapping(value="Cart1")
+		 public ModelAndView Cartpage(HttpSession session)
+		 {
+		  ModelAndView  mv=new ModelAndView("home");
+		  mv.addObject("UserClickedCart","true");
+		  mv.addObject("categoryList", categoryDAO.list());
+		  return mv;
+		  
+		 }
+*/
 }// home matheds

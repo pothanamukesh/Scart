@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Home Page</title>
 <meta name="viewport" content="width = device-width, initial-scale = 1">
-<title>Home Page</title>
 <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/HomeStyle.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/slider.css"/>">
@@ -55,23 +54,6 @@
                            </div><!-- /input-group -->
                     </div> <!--end form grop-->      
                 </form>
-     <ul class="nav navbar-nav navbar-right">
-           <sec:authorize access="!isAuthenticated()">
-    
-			      <li><a href="registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-			      <li><a href="login"  id="mylogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-			      </sec:authorize>
-             </ul>
-           
-      <sec:authorize access="isAuthenticated()">
-      
-     <ul class="nav navbar-nav navbar-right">
-		      <li><a href="CartPage"><span class="glyphicon glyphicon-user"></span>Cart</a></li>
-			<li><a href="<c:url value="/perform_logout" />">Logout</a></li>
-			<li><a href="">Welcome  <sec:authentication property="principal.username"/></a></li></ul>
-		</sec:authorize>
-     
-     
      
      
      
@@ -101,7 +83,22 @@
            <span class="nav-line-1">Try</span>
            <span class="nav-line-2">Prime<span class="nav-icon nav-arrow" style="visibility:visible"></span></span>
            </a> -->
-           <a href="CartPage"><span class="glyphicon glyphicon-user"></span>Cart</a>
+           <ul class="nav navbar-nav navbar-right">
+           <sec:authorize access="!isAuthenticated()">
+    
+			      <li><a  class="alink" href="registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			      <li><a  class="alink" href="login"  id="mylogin"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			      </sec:authorize>
+             </ul>
+           
+      <sec:authorize access="isAuthenticated()">
+      
+     <ul class="nav navbar-nav navbar-right">
+		      <li><a  class="alink" href="Cart"><span class="glyphicon glyphicon-user"></span>Cart</a></li>
+			<li><a  class="alink" href="<c:url value="/perform_logout" />">Logout</a></li>
+			<li><a  class="alink" href="#">Welcome  <sec:authentication property="principal.username"/></a></li></ul>
+		</sec:authorize>
+      
      	 </div><!--nav tools-->
      </div><!--nav right--> 
         
@@ -116,19 +113,20 @@
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
-			</ol>
+<!-- 				<li data-target="#myCarousel" data-slide-to="3"></li>
+ -->			</ol>
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img src="F:\NIIT\Project\Scart\src\main\webapp\resources\images\mac book.jpg" alt="Chania" style=" width:100%; height:240px">
+					<img alt="Chania" style=" width:100%; height:240px" src="<c:url value="/resources/img/img1.jpg"></c:url>"> 
 				</div>
 
 				<div class="item ">
-					<img src="D:\images\mobile1.jpg" alt="Chania"  style=" width:100%; height:240px">
+					<img alt="Chania"  style=" width:100%; height:240px"src="<c:url value="/resources/img/img2.jpg"></c:url>">
 				</div>
 
-				<!-- <div class="item">
-					<img src="D:\images\pc3.jpg" alt="Flower" width="320" height="240">
-				</div> -->
+				<div class="item">
+                   <img alt="Chania"  style=" width:100%; height:240px"src="<c:url value="/resources/img/img3.jpg"></c:url>">			
+                </div> 
 			</div>
 			<a class="left carousel-control" href="#myCarousel" role="button"
 				data-slide="prev"> <span
@@ -148,8 +146,8 @@
 <!-- ############################################################################################################## -->
 
 
-	 <h1>Home Page</h1>
-	<!--  if user logged in these liks are not display-->
+<!-- 	 <h1 aling="center">Home Page</h1>
+ -->	<!--  if user logged in these liks are not display-->
 	<%-- <c:if test="${ empty successMsg}">
 		<a href="login">Login</a>
 		<br>
@@ -184,9 +182,7 @@
 		
 		<c:if test="${showadminPage}">
 		<jsp:include page="Admin.jsp"></jsp:include></c:if>
-		<c:if test="${UserClickedCart}">
-		<jsp:include page="CartPage.jsp"></jsp:include></c:if>
-		
+
 		<c:choose>
 		<c:when test="${Clickedshowproduct}">
 			<c:import url="/WEB-INF/views/ShowProduct.jsp"></c:import>
@@ -204,24 +200,121 @@
 	</c:choose>
 	<!-- ########################################################################################### -->
 
-<c:forEach items="${productList}" var="product" end="3">
-			<div class="responsive">
-              <div class="img">
+<c:if test="${empty HideOthers}">
 
-						<a href="ShowProduct/${product.id}"> <img height="200px"
-							width="200px" alt="${product.id }"
+		<c:choose>
+			<c:when test="${!Administrator}">
+				<c:if test="${!empty ProductList}">
+					<div>
+						<!-- <ul> -->
+						<div class="row" id="myproduct"
+							style="padding-top: 20px; padding-botton: 20px; padding-left: 20px; padding-bottom: 20px;">
+							<!-- <h3 style="margin-left: 15px">Latest Products</h3> -->
+							<c:forEach items="${ProductList}" var="product">
+								<div class="col-xs-2 w3-animate-zoom">
+									<div class="img">
+										<a href="ShowProduct/${product.id}"> <img height="192px"
+							                                width="192px" alt="${product.id }"
 							src="<c:url value="/resources/images/${product.id }.jpg"></c:url>"></a>
-				
-			<div class="desc">
-			<c:out value="${product.name}" />
-			<c:url var="action" value="addtocart/${product.id}/${userid }"></c:url>
-			<form:form action="${action}" modelAttribute="cart">
-			<input type="submit" class="btn btn-primary" value="Add To Cart" />
-			</form:form>
-			</div>
-			</div>
-			</div>
-		</c:forEach> 
+										<div class="desc w3-black" style="opacity: 0.9">
+											<p>
+												${product.name}<br> <i class="fa fa-inr"
+													aria-hidden="true"></i> ${product.price}
+												
+											</p>
+
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						<!-- </ul> -->
+					</div>
+				</c:if>
+			</c:when>
+		</c:choose>
+	</c:if>
+
+		<!-- ############################################################################################################3 -->
+	
+		<c:choose>
+			<c:when test="${!Administrator}">
+				<c:if test="${empty HideOthers}">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>OUR COMPANY</th>
+								<th>TOP CATEGORIES</th>
+								<th>POLICIES AND INFO</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							<tr>
+
+								<td>About us<br> Scart<br> Ethnico<br>
+									Place of Origin<br> Blog<br>
+								</td>
+
+								<td>Watches<br> Dresses<br> Mobiles<br>
+									Accessories<br> Salwar Suits<br></td>
+								<td>Terms & Conditions<br> Policy for Sellers<br>
+									Policy for Buyers<br> Shipping & Refund Policies<br>
+									Wholesale Policy<br> Privacy Policy<br></td>
+							</tr>
+
+							<tr>
+								<th>SUPPORT</th>
+								<th>PAYMENT OPTIONS</th>
+								<th>STAY CONNECTED</th>
+							</tr>
+
+
+							<tr>
+								<td><i class="fa fa-envelope"
+									style="font-size: 30px; color: blue"></i> <a
+									href="mailto:support@company.com">support@Scart.com</a><br>
+									<i class="fa fa-phone" style="font-size: 30px; color: blue"></p></i><br> <i class="fa fa-map-marker"
+									style="font-size: 30px; color: blue"></i>
+									<!-- <p>
+										<span>24/4-859 V V Nagar,VIJAYAWADA, </span> Andhra Pradesh,
+										INDIA
+									</p> -->
+									<br></td>
+								<td><div class="footer-icons">
+										<a href=""><i class="fa fa-facebook-official"
+											style="font-size: 30px; color: blue"></i> <a href=""><i
+												class="fa fa-twitter"
+												style="font-size: 30px; color: #00ffff"></i></a> <a href=""><i
+												class="fa fa-linkedin-square"
+												style="font-size: 30px; color: blue"></i></a> <a href=""><i
+												class="fa fa-google" style="font-size: 30px; color: #3366ff"></i></a>
+											<a href=""><i class="fa fa-google-plus-official"
+												style="font-size: 30px; color: red"></i></a> <a href=""><i
+												class="fa fa-whatsapp"
+												style="font-size: 30px; color: #33ff00"></i></a>
+									</div></td>
+								<td><a href=""><i class="fa fa-paypal"
+										aria-hidden="true" style="font-size: 30px; color: #0066ff"></i>
+								</a> . <a href=""><i class="fa fa-cc-amex" aria-hidden="true"
+										style="font-size: 30px; color: #0066ff"></i> </a> . <a href=""><i
+										class="fa fa-cc-mastercard" aria-hidden="true"
+										style="font-size: 30px; color: #0066ff"></i> </a> . <a href=""><i
+										class="fa fa-cc-visa" aria-hidden="true"
+										style="font-size: 30px; color: #0066ff"></i> </a> . <a href=""><i
+										class="fa fa-credit-card" aria-hidden="true"
+										style="font-size: 30px; color: #0066ff"></i> </a> . <a href=""><i
+										class="fa fa-google-wallet" aria-hidden="true"
+										style="font-size: 30px; color: #0066ff"></i> </a> . <a href=""><i
+										class="fa fa-cc-stripe" aria-hidden="true"
+										style="font-size: 30px; color: #0066ff"></i> </a></td>
+						</tbody>
+					</table>
+				</c:if>
+			</c:when>
+		</c:choose>
+	</div>
+		
 
 	
 		

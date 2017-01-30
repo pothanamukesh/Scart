@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/cart.css"/>">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>CartPage</title>
+<style>#myCarousel{display:none;}
+#myproduct{display:none;}
+</style>
 </head>
 <body>
 <h1 align="center" style="margin-top:60px;">Your Cart</h1>

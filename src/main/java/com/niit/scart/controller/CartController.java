@@ -100,7 +100,7 @@ public class CartController {
 	 
 	 @RequestMapping("editorder/{id}")
 		public String editorder(@PathVariable("id") int id, @RequestParam("quantity") int q, HttpSession session) {
-			Cart cart = cartDAO.get(id);
+			Cart cart = cartDAO.getitem(id);
 			Product p = productDAO.get(cart.getProductid());
 			cart.setQuantity(q);
 			cart.setPrice(q * p.getPrice());
@@ -110,7 +110,7 @@ public class CartController {
 		}
 	 
 		 
-	 @RequestMapping(value="/Cart")
+/*	 @RequestMapping(value="/Cart")
 	 public ModelAndView cartpage(@ModelAttribute("cart") Cart cart,HttpSession session){
 	  ModelAndView mv= new ModelAndView("CartPage");
 	  if(cartDAO.list()==null){
@@ -121,7 +121,24 @@ public class CartController {
 	  }
 	  mv.addObject("UserClickedCart","true");
 	  return mv;
+	 }*/
+	 @RequestMapping(value="/Cart")
+	 public ModelAndView cartpage(@ModelAttribute("cart") Cart cart,HttpSession session){
+	  ModelAndView mv= new ModelAndView("home");
+	  int userid = (Integer) session.getAttribute("userid");
+	  mv.addObject("CartList", cartDAO.get(userid));
+	  if(cartDAO.cartsize((Integer) session.getAttribute("userid"))!=0){
+	  // mv.addObject("emptycart","Sorry your shopping cart is empty");
+	   mv.addObject("cartprice", cartDAO.CartPrice((Integer) session.getAttribute("userid")));
+	  }else{
+	 
+	  mv.addObject("emptycart","Sorry your shopping cart is empty");
+	 // mv.addObject("cartprice", cartDAO.CartPrice((Integer) session.getAttribute("userid")));
+	  }
+	  mv.addObject("UserClickedCart","true");
+	  return mv;
 	 }
+	 
 	 @RequestMapping("placeorder")
 	 public String placeorder(Model model)
 	 {

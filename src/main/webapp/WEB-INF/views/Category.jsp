@@ -14,6 +14,7 @@
   border-radius: 0px;
   margin-top: 10px !important;
 }</style>
+<style>#myCarousel{display:none;}</style>
 </head>
 <body>
 
