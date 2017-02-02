@@ -1,5 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
+body {
+    font-size: 13px;
+    line-height: 19px;
+    color: #111;
+    font-family: Arial,sans-serif;
+}
 div {
 	display: block;
 }
@@ -53,6 +59,13 @@ div {
 	height: 35px;
 	position: relative;
 	height: 35px;
+}
+
+.navbar-form .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    padding-left: 200px !important;
 }
 
 .nav-left
@@ -323,6 +336,8 @@ li {
 	width: 978px;
 	margin: 0 auto;
 	position: relative;
+	 decoration :none;
+	
 }
 
 .alink {
@@ -334,26 +349,36 @@ li {
 	font-family: arial, sans-serif;
 	font-size: 14px;
 	float: left;
+    decoration :none;
 }
+
+
 /*=====================================================================================================*/
+.container {
+	padding:25px auto;
+	margin: 25px auto;
+	position: relative;
+}
+
 div.img {
-    border: 1px solid #ccc;
-    margin-top:20px;
-   
+    margin: 5px; 
+	border: 1px solid #ccc;
+	float: left;
+	padding:10px auto;
+	width: 160px;
 }
 
 div.img:hover {
-    border: 1px solid #777;
+	border: 1px solid #777;
 }
 
 div.img img {
-    width:200px;;
-    height:200px;
+	width: 100%;
+	height: auto;
 }
 
 div.desc {
-    padding: 15px;
-    text-align: center;
+	padding: 15px;
 }
 
 * {

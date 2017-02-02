@@ -13,7 +13,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="<c:url value="/resources/js/Login.js" />"></script>
-<style>#myCarousel{display:none;}</style>
+<style>#myCarousel{display:none;}
+#myproduct{display:none;}
+</style>
 
 </head>
 

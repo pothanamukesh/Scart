@@ -46,54 +46,8 @@ public class UserController {
 
 	HttpSession session;
 
-/*	@RequestMapping(value = "/validate", method = RequestMethod.POST)
-	public ModelAndView validate(@RequestParam(value = "i") int id,
-			@RequestParam(value = "password") String password) {
-		log.debug("staring of validate Method............V..........!");
-		ModelAndView mv = new ModelAndView("/home");
-		user = userDAO.validate(id, password);
-		if (user != null) {
-			log.debug("valide credential.........VC...........!");
-			session.setAttribute("loggedInUser", user.getUsername());
-			session.setAttribute("loggedInUserId", user.getId());
-			session.setAttribute("user", user);
-			if (user.getRole().equals("Role_Admin")) {
-				log.debug("Loggied in Admin.......A.......!");
-				mv.addObject("isAdmin", "true");
-				session.setAttribute("Supplier", supplier);
-				session.setAttribute("SupplierList", supplierDAO.list());
-				session.setAttribute("Category", category);
-				session.setAttribute("CategoryList", categoryDAO.list());
-				log.debug("end of the Login Admin...........!");
-			} else {
-				log.debug("Logged to the User.............!");
-				mv.addObject("isAdmin", "false");
-				// cart detals are add
-			}
 
-		} else {
-			log.debug("invalid Credential.........................!");
-			mv.addObject("invalidCredential", "true");
-			mv.addObject("errorMessage", "invalid Credential");
 
-		}
-		log.debug("Ending of the Method Validate");
-		return mv;
-
-	}
-	@RequestMapping("/logout")
-	public ModelAndView logout(HttpServletRequest request,HttpServletResponse response)
-	{
-		log.debug("Starting of  the Method  logout.....................!");
-		ModelAndView mv=new ModelAndView("/home");
-		session.invalidate();
-		session=request.getSession(true);
-		session.setAttribute("Category", category);
-		session.setAttribute("CategoryList", categoryDAO.list());
-		mv.addObject("logoutmsg", "You Successfully Logout.......................!");
-		mv.addObject("loggedout","true");
-		return mv;
-	}*/
 	@RequestMapping(value="adduser")
 	public String addsupplier(@ModelAttribute("user") User  user, Model m,RedirectAttributes attributes)
 	{

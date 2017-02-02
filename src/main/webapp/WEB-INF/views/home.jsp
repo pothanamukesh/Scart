@@ -11,11 +11,17 @@
 <meta name="viewport" content="width = device-width, initial-scale = 1">
 <link rel="stylesheet" href="<c:url value="/resources/css/bootstrap.min.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/css/HomeStyle.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/slider.css"/>">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<script src="<c:url value="/resources/js/image_js.js" />"></script>
+<link rel="stylesheet" href="<c:url value="/resources/css/bootstrap-theme.min.css" />">
+<link href="<c:url value="/resources/css/w3.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/font-awesome.min.css" />"rel="stylesheet">
+
+
+<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+
  <style>
   .carousel-inner > .item > img,
   .carousel-inner > .item > a > img {
@@ -24,6 +30,10 @@
   }
   body{padding-top:52px;}
   </style>
+  
+  
+   
+    
 
 </head>
 <body>
@@ -54,8 +64,8 @@
                            </div><!-- /input-group -->
                     </div> <!--end form grop-->      
                 </form>
-     
-     
+     		
+						
      
      </div><!--right main-->
     </div><!-- /.navbar-collapse -->
@@ -67,23 +77,17 @@
       		   <ul class="nav-categeory ullink ">
                  <li class="categeory">
                  <c:forEach items="${CategoryList}" var="category" >
-                 <a class="alink" href="navproducts/${category.id}"><c:out value="${category.name}" />
+                 <a class="alink" id="mycategory"href="navproducts/${category.id}"><c:out value="${category.name}" />
                 </a>					
 					</c:forEach></li>
-                   		 </ul><!--ul end-->        
+                   		 </ul><!--ul end--> 
+                   		 
+	     
    </div><!--nav-shop-->
          </div><!--left-->
            <div class="nav-right">
            <div id="nav-tools">
-           <!-- <a href="#" class="nav-a nav-a-2">
-           <span class="nav-line-1">Hello.Sign in</span>
-           <span class="nav-line-2">Your Orders<span class="nav-icon nav-arrow" style="visibility:visible"></span></span>
-           </a>
-           <a href="#" class="nav-a nav-a-2" id="nav-try">
-           <span class="nav-line-1">Try</span>
-           <span class="nav-line-2">Prime<span class="nav-icon nav-arrow" style="visibility:visible"></span></span>
-           </a> -->
-           <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
            <sec:authorize access="!isAuthenticated()">
     
 			      <li><a  class="alink" href="registration"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -94,9 +98,13 @@
       <sec:authorize access="isAuthenticated()">
       
      <ul class="nav navbar-nav navbar-right">
-		      <li><a  class="alink" href="Cart"><span class="glyphicon glyphicon-user"></span>Cart</a></li>
-			<li><a  class="alink" href="<c:url value="/perform_logout" />">Logout</a></li>
-			<li><a  class="alink" href="#">Welcome  <sec:authentication property="principal.username"/></a></li></ul>
+<!-- 		      <li><a  class="alink" href="Cart"><span class="glyphicon glyphicon-user"></span>Cart</a></li>
+ -->			<li style="float: right"><a href="Cart"
+									class="w3-hover-none w3-text-sand w3-hover-text-white"><i
+										class="fa fa-shopping-cart"></i> <span
+										class="w3-badge w3-white"><c:out value="${cartsize}"></c:out> </span></a></li>
+ <li><a  class="alink" href="<c:url value="/perform_logout" />">Logout</a></li>
+			<li><a  class="alink" href="#">Hi  <sec:authentication property="principal.username"/></a></li></ul>
 		</sec:authorize>
       
      	 </div><!--nav tools-->
@@ -106,6 +114,9 @@
      </nav>
     </header><br><br>
     <!-- ####################################################################################################### -->
+   
+    <c:if test="${empty LoggedIn}">
+   
 	<div class="">
 		<br>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -125,7 +136,7 @@
 				</div>
 
 				<div class="item">
-                   <img alt="Chania"  style=" width:100%; height:240px"src="<c:url value="/resources/img/img3.jpg"></c:url>">			
+                   <img alt="Chania"  style=" width:100%; height:240px"src="<c:url value="/resources/img/printer.jpg"></c:url>">			
                 </div> 
 			</div>
 			<a class="left carousel-control" href="#myCarousel" role="button"
@@ -140,23 +151,11 @@
 		</div>
 	</div>
 	
-
+</c:if>
 
 
 <!-- ############################################################################################################## -->
 
-
-<!-- 	 <h1 aling="center">Home Page</h1>
- -->	<!--  if user logged in these liks are not display-->
-	<%-- <c:if test="${ empty successMsg}">
-		<a href="login">Login</a>
-		<br>
-		<a href="registration">Register</a>
-		<a href="Admin"> Admin</a>
-	</c:if>  --%>
-	
-
-	<hr>
 	${successMsg} ${errorMSG }
 
 
@@ -189,37 +188,35 @@
 		</c:when>
 	</c:choose>
 	<c:choose>
-	<c:when test="${Clickedcatproduct}">
+	 <c:when test="${Clickedcatproduct}">
 			<c:import url="/WEB-INF/views/catproducts.jsp"></c:import>
 		</c:when>
-	</c:choose>
+	</c:choose> 
 	<c:choose>
 	<c:when test="${UserClickedCart}">
 			<c:import url="/WEB-INF/views/CartPage.jsp"></c:import>
 		</c:when>
 	</c:choose>
 	<!-- ########################################################################################### -->
-
-<c:if test="${empty HideOthers}">
+<c:if test="${empty LoggedIn}">
 
 		<c:choose>
 			<c:when test="${!Administrator}">
 				<c:if test="${!empty ProductList}">
-					<div>
+					<div id="myproduct">
 						<!-- <ul> -->
 						<div class="row" id="myproduct"
 							style="padding-top: 20px; padding-botton: 20px; padding-left: 20px; padding-bottom: 20px;">
 							<!-- <h3 style="margin-left: 15px">Latest Products</h3> -->
 							<c:forEach items="${ProductList}" var="product">
 								<div class="col-xs-2 w3-animate-zoom">
-									<div class="img">
+									<div class="img" style="margin: 5px">
 										<a href="ShowProduct/${product.id}"> <img height="192px"
 							                                width="192px" alt="${product.id }"
 							src="<c:url value="/resources/images/${product.id }.jpg"></c:url>"></a>
 										<div class="desc w3-black" style="opacity: 0.9">
 											<p>
-												${product.name}<br> <i class="fa fa-inr"
-													aria-hidden="true"></i> ${product.price}
+												${product.name}<br> <i class="fa fa-inr" aria-hidden="true"></i> ${product.price}
 												
 											</p>
 
@@ -237,9 +234,9 @@
 
 		<!-- ############################################################################################################3 -->
 	
-		<c:choose>
-			<c:when test="${!Administrator}">
-				<c:if test="${empty HideOthers}">
+				<footer class="footer-distributed w3-card-4 w3-black w3-margin-0"
+		style="opacity: 0.9">
+		<div class="footer-left" style="margin-top: 10px">
 					<table class="table">
 						<thead>
 							<tr>
@@ -276,10 +273,6 @@
 									href="mailto:support@company.com">support@Scart.com</a><br>
 									<i class="fa fa-phone" style="font-size: 30px; color: blue"></p></i><br> <i class="fa fa-map-marker"
 									style="font-size: 30px; color: blue"></i>
-									<!-- <p>
-										<span>24/4-859 V V Nagar,VIJAYAWADA, </span> Andhra Pradesh,
-										INDIA
-									</p> -->
 									<br></td>
 								<td><div class="footer-icons">
 										<a href=""><i class="fa fa-facebook-official"
@@ -310,13 +303,9 @@
 										style="font-size: 30px; color: #0066ff"></i> </a></td>
 						</tbody>
 					</table>
-				</c:if>
-			</c:when>
-		</c:choose>
-	</div>
-		
-
-	
+					</div>
+					</footer>
+				
 		
 </body>
 </html>

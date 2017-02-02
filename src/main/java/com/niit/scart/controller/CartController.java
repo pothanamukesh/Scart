@@ -34,7 +34,7 @@ public class CartController {
 	 private ProductDAO productDAO;
 	 
 	 public static final Logger log=LoggerFactory.getLogger(CartController.class);
-	 
+/*	 
 @RequestMapping(value="/Cart1")
 	 public ModelAndView Cartpage(HttpSession session)
 	 {
@@ -43,11 +43,11 @@ public class CartController {
 	  mv.addObject("categoryList", categoryDAO.list());
 	  return mv;
 	  
-	 }
+	 }*/
 	 int q;
 	 
 	 @RequestMapping(value={"addtocart/{id}","navproducts/addtocart/{id}","addtoCart/{userid}/{id}"})
-	 public String addTOCart(@ModelAttribute("cart")Cart cart,BindingResult result,@PathVariable("userid") int userid,@PathVariable("id") int productid,HttpSession session){
+	 public String addTOCart(@ModelAttribute("cart")Cart cart,BindingResult result,@PathVariable("userid") int userid,@PathVariable("id") int productid,HttpSession session)throws Exception{
 	 
 	  log.info("Cart operation start");
 	  long p;
@@ -62,9 +62,10 @@ public class CartController {
 	   cart2.setStatus("C");
 	   cart2.setUserid(userid);
 	 // cart2.setUserid(((int) session.getAttribute("userid"));
-	   session.setAttribute("cartsize", cartDAO.cartsize( (Integer) session.getAttribute("userid")));
-	   cartDAO.saveorupdate(cart2);
-	            return "redirect:Cart";
+	   	   cartDAO.saveorupdate(cart2);
+	   	session.setAttribute("cartsize", cartDAO.cartsize( (Integer) session.getAttribute("userid")));
+	  System.out.println("save sucessfully..............................!");
+	            return "redirect:/Cart";
 	  }else{
 	   Cart cart1 = cartDAO.getproduct(productid,userid);
 	   Product product1 = productDAO.get(productid);
@@ -78,6 +79,7 @@ public class CartController {
 	 cart1.setPrice(p);
 	// cart1.setUserid(userid);
 	cartDAO.saveorupdate(cart1);
+	session.setAttribute("cartsize", cartDAO.cartsize( (Integer) session.getAttribute("userId")));
 	System.out.println("opeartion over");
 
 	log.info("cart operaiton over");
@@ -93,47 +95,35 @@ public class CartController {
 			return "redirect:/Cart";
 		}
 	 @RequestMapping(value="delete/{id}")
-	 public String delete(@ModelAttribute("cart") Cart cart){
+	 public String delete(@ModelAttribute("cart") Cart cart,HttpSession session){
 	  cartDAO.delete(cart);
+	  session.setAttribute("cartsize", cartDAO.cartsize( (Integer) session.getAttribute("userid")));
 	  return "redirect:/Cart";
 	 }
 	 
 	 @RequestMapping("editorder/{id}")
 		public String editorder(@PathVariable("id") int id, @RequestParam("quantity") int q, HttpSession session) {
 			Cart cart = cartDAO.getitem(id);
-			Product p = productDAO.get(cart.getProductid());
+			Product product = productDAO.get(cart.getProductid());
+			System.out.println("cartlist==="+cart.getProductid());
+			System.out.println("productlist="+product);
 			cart.setQuantity(q);
-			cart.setPrice(q * p.getPrice());
+			cart.setPrice(q * product.getPrice());
 			cartDAO.saveorupdate(cart);
 			session.setAttribute("cartsize", cartDAO.cartsize((Integer) session.getAttribute("userid")));
 			return "redirect:/Cart";
 		}
-	 
-		 
-/*	 @RequestMapping(value="/Cart")
-	 public ModelAndView cartpage(@ModelAttribute("cart") Cart cart,HttpSession session){
-	  ModelAndView mv= new ModelAndView("CartPage");
-	  if(cartDAO.list()==null){
-	   mv.addObject("emptycart","Sorry your shopping cart is empty");
-	  }else{
-	  mv.addObject("CartList", cartDAO.list());
-	  mv.addObject("cartprice", cartDAO.CartPrice((Integer) session.getAttribute("userid")));
-	  }
-	  mv.addObject("UserClickedCart","true");
-	  return mv;
-	 }*/
+
 	 @RequestMapping(value="/Cart")
 	 public ModelAndView cartpage(@ModelAttribute("cart") Cart cart,HttpSession session){
 	  ModelAndView mv= new ModelAndView("home");
 	  int userid = (Integer) session.getAttribute("userid");
 	  mv.addObject("CartList", cartDAO.get(userid));
 	  if(cartDAO.cartsize((Integer) session.getAttribute("userid"))!=0){
-	  // mv.addObject("emptycart","Sorry your shopping cart is empty");
-	   mv.addObject("cartprice", cartDAO.CartPrice((Integer) session.getAttribute("userid")));
+		   mv.addObject("cartprice", cartDAO.CartPrice((Integer) session.getAttribute("userid")));
 	  }else{
 	 
 	  mv.addObject("emptycart","Sorry your shopping cart is empty");
-	 // mv.addObject("cartprice", cartDAO.CartPrice((Integer) session.getAttribute("userid")));
 	  }
 	  mv.addObject("UserClickedCart","true");
 	  return mv;

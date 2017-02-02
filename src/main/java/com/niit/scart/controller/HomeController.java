@@ -59,7 +59,8 @@ Logger log=LoggerFactory.getLogger(HomeController.class);
 		ModelAndView mv = new ModelAndView("home");
 /*		mv.addObject("UserClickedshowproduct", "true");*/
 		mv.addObject("Clickedcatproduct", "true");
-		log.debug("Starting of  the method home page.......H.......!");
+		mv.addObject("HideOthers","true");
+		log.debug("Ending of  the method home page.......H.......!");
 		return mv;
 	}
 
